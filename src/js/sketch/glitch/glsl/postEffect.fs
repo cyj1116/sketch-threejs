@@ -9,13 +9,13 @@ varying vec2 vUv;
 #pragma glslify: random = require(@ykob/glsl-util/src/random);
 #pragma glslify: snoise3 = require(glsl-noise/simplex/3d)
 
-const float interval = 3.0;
+const float interval = 0.0;
 
 void main(void){
   float strength = smoothstep(interval * 0.5, interval, interval - mod(time, interval));
   vec2 shake = vec2(strength * 8.0 + 0.5) * vec2(
-    random(vec2(time)) * 2.0 - 1.0,
-    random(vec2(time * 2.0)) * 2.0 - 1.0
+    random(vec2(time)) * .5 - 1.0,
+    random(vec2(time * 1.0)) * 0.5 - 1.0
   ) / resolution;
 
   float y = vUv.y * resolution.y;
